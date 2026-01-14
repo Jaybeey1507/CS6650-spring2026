@@ -1,1 +1,2 @@
-# CS6650
+This repository contains my Go Gin REST API from Homework 1a, deployed and tested on AWS EC2 for Homework 1b.
+The router.Run("0.0.0.0:8080") was initially router.Run("localhost:8080") before Homework1b
