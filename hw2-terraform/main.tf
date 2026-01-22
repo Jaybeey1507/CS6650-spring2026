@@ -28,6 +28,19 @@ resource "aws_instance" "demo-instance" {
   }
 }
 
+resource "aws_instance" "demo-instance-2" {
+  ami                    = data.aws_ami.al2023.id
+  instance_type          = "t2.micro"
+  iam_instance_profile   = "LabInstanceProfile"
+  vpc_security_group_ids = [aws_security_group.ssh.id]
+  key_name               = var.ssh_key_name
+
+  tags = {
+    Name = "terraform-created-instance-2"
+  }
+}
+
+
 # Your security that grants ssh access from 
 # your ip address to your ec2 instance
 resource "aws_security_group" "ssh" {
@@ -58,6 +71,11 @@ data "aws_ami" "al2023" {
   }
 }
 
-output "ec2_public_dns" {
+output "ec2_public_dns_1" {
   value = aws_instance.demo-instance.public_dns
 }
+
+output "ec2_public_dns_2" {
+  value = aws_instance.demo-instance-2.public_dns
+}
+
