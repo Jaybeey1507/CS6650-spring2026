@@ -1,0 +1,5 @@
+﻿This is a simple test file for MapReduce.
+MapReduce splits text into chunks.
+Chunks are processed by mappers.
+Then the reducer merges word counts.
+MapReduce MapReduce MapReduce.
