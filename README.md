@@ -16,24 +16,30 @@ The service is written in Go using Gin, containerized with Docker, deployed to A
 # Project Structure
 
 ```
-CS6650_2b_demo/
-├── src/                # Go server code + Dockerfile
-│   ├── main.go
-│   ├── go.mod
-│   ├── go.sum
-│   ├── vendor/
-│   └── Dockerfile
+Homework5/
 │
-├── terraform/          # Infrastructure as Code (ECR, ECS, networking)
+├── CS6650_2b_demo/
+│   ├── src/                # Go server code + Dockerfile
+│   │   ├── main.go
+│   │   ├── go.mod
+│   │   ├── go.sum
+│   │   ├── vendor/
+│   │   └── Dockerfile
+│   │
+│   ├── terraform/          # Infrastructure as Code (ECR, ECS, networking)
 │
-├── screenshots/        # Load test and deployment screenshots
+├── locust/                 # Load testing scripts
+│   └── locustfile.py
+│
+├── screenshots/            # Deployment & load testing screenshots
 │
 └── README.md
 ```
 
-* Server code: `src/main.go`
-* Dockerfile: `src/Dockerfile`
-* Infrastructure: `terraform/`
+* Server code: `CS6650_2b_demo/src/main.go`
+* Dockerfile: `CS6650_2b_demo/src/Dockerfile`
+* Infrastructure: `CS6650_2b_demo/terraform/`
+* Load testing: `locust/locustfile.py`
 
 ---
 
@@ -42,12 +48,12 @@ CS6650_2b_demo/
 Navigate to the `src` folder:
 
 ```
-cd src
+cd CS6650_2b_demo/src
 go mod tidy
 go run main.go
 ```
 
-Server will start at:
+Server runs at:
 
 ```
 http://localhost:8080
@@ -57,17 +63,11 @@ http://localhost:8080
 
 # How to Run with Docker
 
-From inside the `src` directory:
+Inside `CS6650_2b_demo/src`:
 
 ```
 docker build -t product-api .
 docker run -p 8080:8080 product-api
-```
-
-Then access:
-
-```
-http://localhost:8080
 ```
 
 ---
@@ -75,8 +75,6 @@ http://localhost:8080
 # How to Deploy to AWS Using Terraform
 
 ## Step 1: Configure AWS Credentials (Learner Lab)
-
-Set your AWS credentials:
 
 ```
 export AWS_ACCESS_KEY_ID="YOUR_KEY"
@@ -98,7 +96,7 @@ aws sts get-caller-identity
 Navigate to terraform folder:
 
 ```
-cd terraform
+cd CS6650_2b_demo/terraform
 terraform init
 terraform plan
 terraform apply
@@ -160,7 +158,7 @@ curl -i -X POST http://localhost:8080/products/1/details \
   }'
 ```
 
-Expected response:
+Expected:
 
 ```
 HTTP/1.1 204 No Content
@@ -168,7 +166,7 @@ HTTP/1.1 204 No Content
 
 ---
 
-## D) 400 Bad Request – Invalid input (mismatched id)
+## D) 400 Bad Request – Invalid input
 
 ```
 curl -i -X POST http://localhost:8080/products/1/details \
@@ -202,11 +200,23 @@ curl -i -X POST http://localhost:8080/products/999/details \
 
 ---
 
-# Load Testing
+# Load Testing with Locust
 
 Locust was used to stress test the deployed ECS service.
 
-Test configurations:
+To run Locust (from locust folder):
+
+```
+docker run -p 8089:8089 -v %cd%:/mnt/locust locustio/locust -f /mnt/locust/locustfile.py --host=http://PUBLIC_IP:8080
+```
+
+Then open:
+
+```
+http://localhost:8089
+```
+
+Tested with:
 
 * 10 users
 * 50 users
@@ -215,34 +225,26 @@ Test configurations:
 Results:
 
 * Throughput scaled almost linearly
-* Approximately 63 requests per second at 100 users
-* 0 percent failures
-* Median response time remained around 60–65 ms
-* Slight increase in 95th percentile under higher concurrency
+* ~63 requests per second at 100 users
+* 0% failures
+* Median response time remained stable (~60 ms)
+* Slight increase in 95th percentile at higher concurrency
 
 Observations:
 
-* GET and POST operations showed similar performance.
-* Write lock overhead was minimal.
-* Network latency dominated response time.
-* ECS Fargate task was not saturated under tested load.
+* GET and POST operations showed similar performance
+* Write lock overhead was minimal
+* Network latency dominated total response time
+* ECS Fargate task was not saturated
 
 ---
 
 # Key Design Decisions
 
-* Used map with RWMutex for O(1) lookup and safe concurrent access.
-* Followed OpenAPI contract exactly for response codes.
-* Used multi-stage Docker build for smaller production image.
-* Used Terraform for declarative infrastructure deployment.
-* Service is stateless and horizontally scalable.
-
----
-
-# Notes
-
-* Data is stored in memory and is not persistent.
-* Scaling ECS to multiple tasks would require shared database.
-* Terraform state files and credentials are excluded using `.gitignore`.
+* Used map with RWMutex for safe concurrent access
+* Followed OpenAPI contract exactly
+* Used multi-stage Docker build for smaller image
+* Used Terraform for declarative infrastructure
+* Service is stateless and horizontally scalable
 
 ---
