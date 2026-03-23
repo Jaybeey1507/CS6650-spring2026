@@ -1,0 +1,768 @@
+{
+  "total_operations": 150,
+  "successes": 150,
+  "failures": 0,
+  "mean_latency_ms": 116.54,
+  "median_latency_ms": 110.44,
+  "min_latency_ms": 80.85,
+  "max_latency_ms": 232.76,
+  "operation_counts": {
+    "create_cart": 30,
+    "get_cart": 30,
+    "add_item": 30,
+    "update_item": 30,
+    "remove_item": 30
+  },
+  "results": [
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 167.67
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 109.27
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 90.6
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 97.76
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 91.85
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 94.02
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 100.7
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 142.88
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 107.37
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 119.97
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 113.4
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 100.7
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 105.27
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 111.54
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 99.32
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 100.36
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 99.88
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 117.67
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 116.06
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 100.54
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 116.07
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 132.79
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 95.91
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 99.55
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 135.98
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 101.7
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 111.92
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 89.04
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 133.71
+    },
+    {
+      "operation": "create_cart",
+      "status_code": 201,
+      "latency_ms": 98.42
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 107.99
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 102.74
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 105.69
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 104.27
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 130.25
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 102.15
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 132.26
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 100.5
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 117.25
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 121.2
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 111.63
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 129.41
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 102.79
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 102.87
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 110.63
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 118.56
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 184.96
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 207.32
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 135.6
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 141.67
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 175.41
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 135.14
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 106.1
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 118.83
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 198.49
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 185.7
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 122.65
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 162.67
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 104.15
+    },
+    {
+      "operation": "add_item",
+      "status_code": 200,
+      "latency_ms": 133.57
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 140.94
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 104.16
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 94.36
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 97.0
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 114.25
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 102.11
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 93.75
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 112.34
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 100.35
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 100.53
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 100.51
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 116.73
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 106.15
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 80.85
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 105.76
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 106.67
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 99.05
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 110.26
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 88.52
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 104.73
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 101.36
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 91.41
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 104.8
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 101.75
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 100.65
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 99.62
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 116.29
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 132.96
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 97.86
+    },
+    {
+      "operation": "get_cart",
+      "status_code": 200,
+      "latency_ms": 103.36
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 132.65
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 117.87
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 115.31
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 109.69
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 108.22
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 150.24
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 121.28
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 104.71
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 126.83
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 107.68
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 108.69
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 114.98
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 117.47
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 115.57
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 129.02
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 105.78
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 129.68
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 107.48
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 132.79
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 105.93
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 96.27
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 128.16
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 133.17
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 118.41
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 114.03
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 106.02
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 105.36
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 118.43
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 115.1
+    },
+    {
+      "operation": "update_item",
+      "status_code": 200,
+      "latency_ms": 106.39
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 99.12
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 116.7
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 104.24
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 112.14
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 105.75
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 110.72
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 133.93
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 117.8
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 166.45
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 117.46
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 115.91
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 116.2
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 107.95
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 108.71
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 107.71
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 112.31
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 97.83
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 114.04
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 102.71
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 102.98
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 98.07
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 232.76
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 167.71
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 150.12
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 136.5
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 113.49
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 133.98
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 116.82
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 115.77
+    },
+    {
+      "operation": "remove_item",
+      "status_code": 200,
+      "latency_ms": 99.05
+    }
+  ]
+}
