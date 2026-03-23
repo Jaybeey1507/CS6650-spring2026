@@ -1,0 +1,162 @@
+[
+  {
+    "cart_id": "cart-f255df3b9caec0053adb891968bdbabb",
+    "eventual_status": 200,
+    "eventual_latency_ms": 95.36,
+    "strong_status": 200,
+    "strong_latency_ms": 97.85,
+    "timestamp": "2026-03-23T07:14:53.167038+00:00"
+  },
+  {
+    "cart_id": "cart-e6b640c2682d5e48068c05397ab1f136",
+    "eventual_status": 200,
+    "eventual_latency_ms": 88.58,
+    "strong_status": 200,
+    "strong_latency_ms": 99.82,
+    "timestamp": "2026-03-23T07:14:53.464643+00:00"
+  },
+  {
+    "cart_id": "cart-f78ad4f6017950d4ea928738ab97c527",
+    "eventual_status": 200,
+    "eventual_latency_ms": 88.58,
+    "strong_status": 200,
+    "strong_latency_ms": 92.55,
+    "timestamp": "2026-03-23T07:14:53.754116+00:00"
+  },
+  {
+    "cart_id": "cart-886f3052a89c74c5f4e72990a61b0930",
+    "eventual_status": 200,
+    "eventual_latency_ms": 112.53,
+    "strong_status": 200,
+    "strong_latency_ms": 103.01,
+    "timestamp": "2026-03-23T07:14:54.092217+00:00"
+  },
+  {
+    "cart_id": "cart-37717485c9e334759d667886a511a7b5",
+    "eventual_status": 200,
+    "eventual_latency_ms": 104.96,
+    "strong_status": 200,
+    "strong_latency_ms": 159.21,
+    "timestamp": "2026-03-23T07:14:54.454809+00:00"
+  },
+  {
+    "cart_id": "cart-5c0772115c25fd8f6c1674213bd5805f",
+    "eventual_status": 200,
+    "eventual_latency_ms": 141.62,
+    "strong_status": 200,
+    "strong_latency_ms": 117.72,
+    "timestamp": "2026-03-23T07:14:54.907189+00:00"
+  },
+  {
+    "cart_id": "cart-91fa15333b2b993f6359b38fc217aff3",
+    "eventual_status": 200,
+    "eventual_latency_ms": 106.55,
+    "strong_status": 200,
+    "strong_latency_ms": 108.44,
+    "timestamp": "2026-03-23T07:14:55.245503+00:00"
+  },
+  {
+    "cart_id": "cart-4299be3116791921062365c08a920b5e",
+    "eventual_status": 200,
+    "eventual_latency_ms": 99.02,
+    "strong_status": 200,
+    "strong_latency_ms": 136.09,
+    "timestamp": "2026-03-23T07:14:55.561154+00:00"
+  },
+  {
+    "cart_id": "cart-385cadad09b049bc43749ff483671e74",
+    "eventual_status": 200,
+    "eventual_latency_ms": 106.6,
+    "strong_status": 200,
+    "strong_latency_ms": 92.85,
+    "timestamp": "2026-03-23T07:14:55.860451+00:00"
+  },
+  {
+    "cart_id": "cart-c84c5baa851f47a69002cd94c7c9c8da",
+    "eventual_status": 200,
+    "eventual_latency_ms": 101.02,
+    "strong_status": 200,
+    "strong_latency_ms": 99.33,
+    "timestamp": "2026-03-23T07:14:56.194910+00:00"
+  },
+  {
+    "cart_id": "cart-e77628b3426e782d8f233e0136a8cfa3",
+    "eventual_status": 200,
+    "eventual_latency_ms": 117.56,
+    "strong_status": 200,
+    "strong_latency_ms": 150.07,
+    "timestamp": "2026-03-23T07:14:56.561921+00:00"
+  },
+  {
+    "cart_id": "cart-edab929452234beb405490bf13a2b8ad",
+    "eventual_status": 200,
+    "eventual_latency_ms": 83.28,
+    "strong_status": 200,
+    "strong_latency_ms": 167.07,
+    "timestamp": "2026-03-23T07:14:56.929428+00:00"
+  },
+  {
+    "cart_id": "cart-a5283bfdb87d0429d3ab24d75534c7e8",
+    "eventual_status": 200,
+    "eventual_latency_ms": 132.95,
+    "strong_status": 200,
+    "strong_latency_ms": 151.9,
+    "timestamp": "2026-03-23T07:14:57.331025+00:00"
+  },
+  {
+    "cart_id": "cart-39d1f09d5ddf8f378bf83ab9dbd3f509",
+    "eventual_status": 200,
+    "eventual_latency_ms": 99.29,
+    "strong_status": 200,
+    "strong_latency_ms": 117.09,
+    "timestamp": "2026-03-23T07:14:57.695747+00:00"
+  },
+  {
+    "cart_id": "cart-02a8188c565d8d720b308f0467f87540",
+    "eventual_status": 200,
+    "eventual_latency_ms": 89.09,
+    "strong_status": 200,
+    "strong_latency_ms": 103.27,
+    "timestamp": "2026-03-23T07:14:58.000061+00:00"
+  },
+  {
+    "cart_id": "cart-4be6c628cdee02732694eed337329a88",
+    "eventual_status": 200,
+    "eventual_latency_ms": 211.93,
+    "strong_status": 200,
+    "strong_latency_ms": 219.14,
+    "timestamp": "2026-03-23T07:14:58.532660+00:00"
+  },
+  {
+    "cart_id": "cart-95f67673ed89f34202f1ae6353d07636",
+    "eventual_status": 200,
+    "eventual_latency_ms": 110.16,
+    "strong_status": 200,
+    "strong_latency_ms": 120.47,
+    "timestamp": "2026-03-23T07:14:58.867744+00:00"
+  },
+  {
+    "cart_id": "cart-e8b92d26a3685217ad938d5e201bcd1f",
+    "eventual_status": 200,
+    "eventual_latency_ms": 117.84,
+    "strong_status": 200,
+    "strong_latency_ms": 140.14,
+    "timestamp": "2026-03-23T07:14:59.238639+00:00"
+  },
+  {
+    "cart_id": "cart-c74bd5bbaba3263edda9fb1aef9def8c",
+    "eventual_status": 200,
+    "eventual_latency_ms": 131.09,
+    "strong_status": 200,
+    "strong_latency_ms": 106.84,
+    "timestamp": "2026-03-23T07:14:59.605908+00:00"
+  },
+  {
+    "cart_id": "cart-7e95021a9bfdad26efd00e06b6aaed4c",
+    "eventual_status": 200,
+    "eventual_latency_ms": 113.11,
+    "strong_status": 200,
+    "strong_latency_ms": 109.26,
+    "timestamp": "2026-03-23T07:14:59.924181+00:00"
+  }
+]
