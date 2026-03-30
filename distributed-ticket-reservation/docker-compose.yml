@@ -1,0 +1,18 @@
+services:
+  reservation:
+    build:
+      context: .
+      dockerfile: Dockerfile.reservation
+    ports:
+      - "8081:8081"
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    environment:
+      RESERVATION_URL: http://reservation:8081
+    ports:
+      - "8080:8080"
+    depends_on:
+      - reservation

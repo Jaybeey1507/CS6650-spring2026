@@ -248,3 +248,54 @@ Observations:
 * Service is stateless and horizontally scalable
 
 ---
+
+# Distributed Ticket Reservation System
+
+## Milestone 1
+This milestone implements the core local reservation flow for a distributed ticket reservation system.
+
+## Services
+- API Gateway
+- Reservation Service
+- Inventory Store access layer
+
+## Features
+- List events
+- List seats for an event
+- Place a temporary hold on a seat
+- Confirm a reservation
+- Prevent double booking in simple concurrent local tests
+
+## Local architecture
+Client -> API Gateway -> Reservation Service -> Inventory Store
+
+## Run locally
+### Option 1: Go
+go run ./cmd/reservation
+go run ./cmd/gateway
+
+### Option 2: Docker Compose
+docker compose up --build
+
+## Test
+go test ./...
+
+## Sample endpoints
+GET http://localhost:8080/health
+GET http://localhost:8080/events
+GET http://localhost:8080/events/evt-1/seats
+
+POST http://localhost:8080/holds
+{
+  "event_id": "evt-1",
+  "seat_id": "A1",
+  "user_id": "user-1",
+  "ttl_seconds": 120
+}
+
+POST http://localhost:8080/reservations/confirm
+{
+  "hold_id": "PASTE_HOLD_ID_HERE",
+  "user_id": "user-1"
+}
+

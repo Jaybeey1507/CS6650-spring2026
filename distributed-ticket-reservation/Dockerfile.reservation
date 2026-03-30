@@ -1,0 +1,12 @@
+FROM golang:1.22-alpine AS build
+WORKDIR /app
+
+COPY go.mod ./
+COPY . .
+
+RUN go build -o /reservation ./cmd/reservation
+
+FROM alpine:3.20
+COPY --from=build /reservation /reservation
+EXPOSE 8081
+CMD ["/reservation"]
