@@ -11,7 +11,7 @@ import (
 func main() {
 	target := os.Getenv("RESERVATION_URL")
 	if target == "" {
-		target = "http://localhost:8081"
+		target = "http://127.0.0.1:8081"
 	}
 
 	u, err := url.Parse(target)

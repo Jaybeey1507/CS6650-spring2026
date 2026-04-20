@@ -7,8 +7,9 @@ const (
 	SeatHeld      = "held"
 	SeatReserved  = "reserved"
 
-	HoldActive  = "active"
-	HoldExpired = "expired"
+	HoldActive    = "active"
+	HoldExpired   = "expired"
+	HoldConfirmed = "confirmed"
 )
 
 type Event struct {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -23,7 +24,24 @@ type confirmRequest struct {
 }
 
 func main() {
-	st := store.NewStore()
+	ctx := context.Background()
+
+	st, err := store.NewBackendFromEnv(ctx)
+	if err != nil {
+		log.Fatalf("failed to initialize store backend: %v", err)
+	}
+
+	go func() {
+		ticker := time.NewTicker(1 * time.Second)
+		defer ticker.Stop()
+
+		for range ticker.C {
+			if err := st.ReleaseExpiredHolds(context.Background()); err != nil {
+				log.Printf("expired hold cleanup error: %v", err)
+			}
+		}
+	}()
+
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +60,13 @@ func main() {
 			writeJSON(w, http.StatusMethodNotAllowed, map[string]string{"error": "method not allowed"})
 			return
 		}
-		writeJSON(w, http.StatusOK, st.ListEvents())
+
+		events, err := st.ListEvents(r.Context())
+		if err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+			return
+		}
+		writeJSON(w, http.StatusOK, events)
 	})
 
 	mux.HandleFunc("/events/", func(w http.ResponseWriter, r *http.Request) {
@@ -57,8 +81,12 @@ func main() {
 			return
 		}
 
-		eventID := parts[1]
-		writeJSON(w, http.StatusOK, st.ListSeats(eventID))
+		seats, err := st.ListSeats(r.Context(), parts[1])
+		if err != nil {
+			writeJSON(w, http.StatusInternalServerError, map[string]string{"error": err.Error()})
+			return
+		}
+		writeJSON(w, http.StatusOK, seats)
 	})
 
 	mux.HandleFunc("/holds", func(w http.ResponseWriter, r *http.Request) {
@@ -78,12 +106,7 @@ func main() {
 			return
 		}
 
-		ttl := 2 * time.Minute
-		if req.TTLSeconds > 0 {
-			ttl = time.Duration(req.TTLSeconds) * time.Second
-		}
-
-		hold, err := st.PlaceHold(req.EventID, req.SeatID, req.UserID, ttl)
+		hold, err := st.PlaceHold(r.Context(), req.EventID, req.SeatID, req.UserID, req.TTLSeconds)
 		if err != nil {
 			writeJSON(w, http.StatusConflict, map[string]string{"error": err.Error()})
 			return
@@ -109,7 +132,7 @@ func main() {
 			return
 		}
 
-		reservation, err := st.ConfirmReservation(req.HoldID, req.UserID)
+		reservation, err := st.ConfirmReservation(r.Context(), req.HoldID, req.UserID)
 		if err != nil {
 			writeJSON(w, http.StatusConflict, map[string]string{"error": err.Error()})
 			return

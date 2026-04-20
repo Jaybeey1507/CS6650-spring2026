@@ -1,30 +1,17 @@
 package store
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"sort"
 	"sync"
 	"time"
-    "context"
 
 	"distributed-ticket-reservation/internal/models"
 )
 
-const (
-	DefaultEventID   = "evt-1"
-	DefaultEventName = "Afrobeats Night Vancouver"
-)
-
-type Backend interface {
-	ListEvents(ctx context.Context) ([]models.Event, error)
-	ListSeats(ctx context.Context, eventID string) ([]models.Seat, error)
-	PlaceHold(ctx context.Context, eventID, seatID, userID string, ttlSeconds int) (models.Hold, error)
-	ConfirmReservation(ctx context.Context, holdID, userID string) (models.Reservation, error)
-	ReleaseExpiredHolds(ctx context.Context) error
-}
-
-type Store struct {
+type MemoryStore struct {
 	mu           sync.Mutex
 	events       map[string]models.Event
 	seats        map[string]models.Seat
@@ -32,38 +19,39 @@ type Store struct {
 	reservations map[string]models.Reservation
 }
 
-func NewStore() *Store {
-	s := &Store{
+func NewMemoryStore() *MemoryStore {
+	s := &MemoryStore{
 		events:       make(map[string]models.Event),
 		seats:        make(map[string]models.Seat),
 		holds:        make(map[string]models.Hold),
 		reservations: make(map[string]models.Reservation),
 	}
 	s.seed()
-	go s.cleanupExpiredHolds()
 	return s
 }
 
-func (s *Store) seed() {
-	event := models.Event{
-		ID:   "evt-1",
-		Name: "Afrobeats Night Vancouver",
+func seatKey(eventID, seatID string) string {
+	return eventID + ":" + seatID
+}
+
+func (s *MemoryStore) seed() {
+	for _, event := range defaultEvents() {
+		s.events[event.ID] = event
 	}
-	s.events[event.ID] = event
 
 	for i := 1; i <= 1000; i++ {
 		seatID := fmt.Sprintf("A%d", i)
 		seat := models.Seat{
 			ID:      seatID,
-			EventID: event.ID,
+			EventID: DefaultEventID,
 			Number:  seatID,
 			Status:  models.SeatAvailable,
 		}
-		s.seats[seatKey(event.ID, seatID)] = seat
+		s.seats[seatKey(DefaultEventID, seatID)] = seat
 	}
 }
 
-func (s *Store) ListEvents() []models.Event {
+func (s *MemoryStore) ListEvents(ctx context.Context) ([]models.Event, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -74,10 +62,10 @@ func (s *Store) ListEvents() []models.Event {
 	sort.Slice(events, func(i, j int) bool {
 		return events[i].ID < events[j].ID
 	})
-	return events
+	return events, nil
 }
 
-func (s *Store) ListSeats(eventID string) []models.Seat {
+func (s *MemoryStore) ListSeats(ctx context.Context, eventID string) ([]models.Seat, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -90,10 +78,10 @@ func (s *Store) ListSeats(eventID string) []models.Seat {
 	sort.Slice(seats, func(i, j int) bool {
 		return seats[i].ID < seats[j].ID
 	})
-	return seats
+	return seats, nil
 }
 
-func (s *Store) PlaceHold(eventID, seatID, userID string, ttl time.Duration) (models.Hold, error) {
+func (s *MemoryStore) PlaceHold(ctx context.Context, eventID, seatID, userID string, ttlSeconds int) (models.Hold, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -112,6 +100,11 @@ func (s *Store) PlaceHold(eventID, seatID, userID string, ttl time.Duration) (mo
 	}
 
 	now := time.Now()
+	ttl := time.Duration(ttlSeconds) * time.Second
+	if ttlSeconds <= 0 {
+		ttl = 2 * time.Minute
+	}
+
 	hold := models.Hold{
 		ID:        fmt.Sprintf("hold-%d", now.UnixNano()),
 		EventID:   eventID,
@@ -131,7 +124,7 @@ func (s *Store) PlaceHold(eventID, seatID, userID string, ttl time.Duration) (mo
 	return hold, nil
 }
 
-func (s *Store) ConfirmReservation(holdID, userID string) (models.Reservation, error) {
+func (s *MemoryStore) ConfirmReservation(ctx context.Context, holdID, userID string) (models.Reservation, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
@@ -178,7 +171,6 @@ func (s *Store) ConfirmReservation(holdID, userID string) (models.Reservation, e
 
 	seat.Status = models.SeatReserved
 	seat.HoldID = hold.ID
-
 	hold.Status = models.HoldConfirmed
 
 	s.seats[key] = seat
@@ -188,42 +180,30 @@ func (s *Store) ConfirmReservation(holdID, userID string) (models.Reservation, e
 	return reservation, nil
 }
 
-func (s *Store) cleanupExpiredHolds() {
-	ticker := time.NewTicker(1 * time.Second)
-	defer ticker.Stop()
+func (s *MemoryStore) ReleaseExpiredHolds(ctx context.Context) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
 
-	for range ticker.C {
-		s.mu.Lock()
-		now := time.Now()
+	now := time.Now()
 
-		for holdID, hold := range s.holds {
-			if hold.Status != models.HoldActive {
-				continue
-			}
-			if now.After(hold.ExpiresAt) {
-				key := seatKey(hold.EventID, hold.SeatID)
-				seat := s.seats[key]
-
-				if seat.Status == models.SeatHeld && seat.HoldID == holdID {
-					seat.Status = models.SeatAvailable
-					seat.HoldID = ""
-					s.seats[key] = seat
-				}
-
-				hold.Status = models.HoldExpired
-				s.holds[holdID] = hold
-			}
+	for holdID, hold := range s.holds {
+		if hold.Status != models.HoldActive {
+			continue
 		}
+		if now.After(hold.ExpiresAt) {
+			key := seatKey(hold.EventID, hold.SeatID)
+			seat := s.seats[key]
 
-		s.mu.Unlock()
-	}
-}
+			if seat.Status == models.SeatHeld && seat.HoldID == holdID {
+				seat.Status = models.SeatAvailable
+				seat.HoldID = ""
+				s.seats[key] = seat
+			}
 
-func defaultEvents() []models.Event {
-	return []models.Event{
-		{
-			ID:   DefaultEventID,
-			Name: DefaultEventName,
-		},
+			hold.Status = models.HoldExpired
+			s.holds[holdID] = hold
+		}
 	}
+
+	return nil
 }

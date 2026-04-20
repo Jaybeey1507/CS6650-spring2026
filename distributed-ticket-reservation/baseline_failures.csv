@@ -1,0 +1,5 @@
+Method,Name,Error,Occurrences
+POST,POST /reservations/confirm,"CatchResponseError('confirm failed: {""error"":""hold does not belong to this user""}\n')",3
+GET,GET /events/:id/seats,"ConnectionRefusedError(10061, '[WinError 10061] No connection could be made because the target machine actively refused it.')",6
+POST,POST /holds,"CatchResponseError('hold failed: {""error"":""seat is not available""}\n')",908
+POST,POST /holds,CatchResponseError('hold failed: '),3
